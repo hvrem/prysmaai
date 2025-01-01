@@ -1,186 +1,208 @@
 import React, { useState, useEffect } from 'react';
-import { Rocket, Moon, Star, DollarSign, Brain, Bot, TrendingUp, Users, Shield, Timer } from 'lucide-react';
+import { ChevronDown, LineChart, Zap, Shield, Gem, Brain, Lock } from 'lucide-react';
 
-const CortixWebsite = () => {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 3,
-    hours: 14,
-    minutes: 22,
-    seconds: 0
-  });
-
+const PrysmaWebsite = () => {
+  const [glitchText, setGlitchText] = useState('PRYSMA AI');
+  
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev.seconds > 0) {
-          return { ...prev, seconds: prev.seconds - 1 };
-        } else if (prev.minutes > 0) {
-          return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
-        } else if (prev.hours > 0) {
-          return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        } else if (prev.days > 0) {
-          return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
-        }
-        return prev;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
+    const glitchInterval = setInterval(() => {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*';
+      if (Math.random() < 0.1) {
+        const glitchedText = 'PRYSMA AI'.split('').map(char => 
+          Math.random() < 0.3 ? chars[Math.floor(Math.random() * chars.length)] : char
+        ).join('');
+        setGlitchText(glitchedText);
+        setTimeout(() => setGlitchText('PRYSMA AI'), 100);
+      }
+    }, 100);
+    
+    return () => clearInterval(glitchInterval);
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Announcement Bar */}
-      <div className="bg-gradient-to-r from-pink-500 to-purple-500 text-white py-2">
-        <div className="container mx-auto text-center">
-          <span className="font-bold">🚀 PRESALE STARTING SOON! 50% BONUS FOR EARLY INVESTORS! 🚀</span>
-        </div>
+    <div className="min-h-screen bg-black text-white overflow-hidden">
+      {/* Background Grid Effect */}
+      <div className="fixed inset-0 opacity-20">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#232323_1px,transparent_1px),linear-gradient(to_bottom,#232323_1px,transparent_1px)] bg-[size:24px_24px]"></div>
       </div>
+      
+      {/* Animated Background Glow */}
+      <div className="fixed inset-0 opacity-30">
+        <div className="absolute -inset-[10px] bg-gradient-to-r from-purple-500/20 via-transparent to-blue-500/20 blur-3xl animate-pulse"></div>
+      </div>
+
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full bg-black/50 backdrop-blur-xl z-50 border-b border-purple-500/30">
+        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/50 to-blue-500/50 animate-pulse"></div>
+            </div>
+            <div className="glitch-container relative">
+              <span className="text-2xl font-bold text-white relative z-10">
+                {glitchText}
+              </span>
+              <span className="absolute top-0 left-0 text-2xl font-bold text-purple-500 opacity-50 transform translate-x-[1px] translate-y-[1px] z-0">
+                {glitchText}
+              </span>
+            </div>
+          </div>
+          <div className="hidden md:flex space-x-8">
+            {['About', 'Features', 'Tokenomics', 'Roadmap'].map(item => (
+              <a key={item} href={`#${item.toLowerCase()}`} 
+                 className="relative group">
+                <span className="text-gray-300 hover:text-white transition-colors">{item}</span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
+              </a>
+            ))}
+          </div>
+          <a href="YOUR_REDIRECT_LINK_HERE" target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded relative group overflow-hidden hover:scale-105 transition-transform">
+            <span className="relative z-10">$PRYS</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          </a>
+        </div>
+      </nav>
 
       {/* Hero Section */}
-      <div className="relative min-h-screen bg-gradient-to-b from-black via-purple-900 to-black overflow-hidden">
-        <div className="relative flex flex-col items-center justify-center min-h-screen text-center px-4">
-          {/* Countdown Timer */}
-          <div className="absolute top-4 w-full max-w-4xl mx-auto">
-            <div className="bg-black/50 backdrop-blur rounded-xl px-6 py-4">
-              <h3 className="text-xl mb-2">Presale Starts In:</h3>
-              <div className="flex justify-center gap-4">
-                {Object.entries(timeLeft).map(([unit, value]) => (
-                  <div key={unit} className="bg-purple-900/50 rounded-lg p-3 min-w-[80px]">
-                    <div className="text-2xl font-bold">{value.toString().padStart(2, '0')}</div>
-                    <div className="text-sm text-gray-400">{unit}</div>
-                  </div>
-                ))}
+      <section className="min-h-screen flex items-center justify-center relative pt-20">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 to-black/20"></div>
+          <div className="absolute inset-0 opacity-20">
+            <svg className="w-full h-full" viewBox="0 0 100 100">
+              <path d="M0,50 L100,50" className="stroke-current text-purple-500 animate-pulse" strokeWidth="0.1" fill="none"/>
+              <path d="M50,0 L50,100" className="stroke-current text-blue-500 animate-pulse" strokeWidth="0.1" fill="none"/>
+              <circle cx="50" cy="50" r="30" className="stroke-current text-purple-500/20" strokeWidth="0.1" fill="none"/>
+            </svg>
+          </div>
+        </div>
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center max-w-5xl mx-auto">
+            <div className="glitch-container mb-6">
+              <h1 className="text-6xl md:text-7xl font-bold relative">
+                <span className="block bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 text-transparent bg-clip-text transform hover:scale-105 transition-transform">
+                  Refracting the Future
+                </span>
+                <span className="block mt-2 bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 text-transparent bg-clip-text transform hover:scale-105 transition-transform">
+                  of Finance
+                </span>
+              </h1>
+            </div>
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 relative group">
+              <span className="relative z-10">Decentralized AI-powered trading network that automatically identifies and executes cross-chain opportunities</span>
+              <span className="absolute -inset-0.5 bg-gradient-to-r from-purple-500/20 to-blue-500/20 blur opacity-0 group-hover:opacity-100 transition-opacity"></span>
+            </p>
+
+            <div className="flex justify-center">
+              <a href="YOUR_REDIRECT_LINK_HERE" target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-gradient-to-r from-purple-500 to-blue-500 rounded relative group overflow-hidden hover:scale-105 transition-transform">
+                <span className="relative z-10">$PRYS</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              </a>
+            </div>
+
+            {/* Key Project Details */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-16">
+              <div className="bg-black/50 p-4 rounded-lg border border-purple-500/30">
+                <Brain className="w-6 h-6 text-purple-400 mx-auto mb-2" />
+                <div className="text-xl font-bold text-white">AI-Powered</div>
+                <div className="text-gray-400 text-sm">Market Analysis</div>
+              </div>
+              <div className="bg-black/50 p-4 rounded-lg border border-purple-500/30">
+                <Lock className="w-6 h-6 text-blue-400 mx-auto mb-2" />
+                <div className="text-xl font-bold text-white">Secure</div>
+                <div className="text-gray-400 text-sm">Architecture</div>
+              </div>
+              <div className="bg-black/50 p-4 rounded-lg border border-purple-500/30">
+                <Gem className="w-6 h-6 text-purple-400 mx-auto mb-2" />
+                <div className="text-xl font-bold text-white">Fair Launch</div>
+                <div className="text-gray-400 text-sm">Distribution</div>
               </div>
             </div>
           </div>
-
-          <div className="space-y-8 mt-32">
-            <Bot className="w-40 h-40 text-pink-500" />
-            <h1 className="text-6xl font-bold mb-4 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-transparent bg-clip-text">
-              CORTIX AI
-            </h1>
-            <p className="text-3xl text-pink-200 mb-8">The Future of Meme Coins is Launching!</p>
-            
-            <div className="max-w-2xl mx-auto bg-white/5 rounded-xl p-6 backdrop-blur">
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="text-left">
-                  <p className="text-gray-400">Presale Price:</p>
-                  <p className="text-2xl font-bold text-green-400">$0.00001 USDT</p>
-                </div>
-                <div className="text-left">
-                  <p className="text-gray-400">Launch Price:</p>
-                  <p className="text-2xl font-bold text-pink-400">$0.00002 USDT</p>
-                </div>
-                <div className="text-left">
-                  <p className="text-gray-400">Min Investment:</p>
-                  <p className="text-xl font-bold">50 USDT</p>
-                </div>
-                <div className="text-left">
-                  <p className="text-gray-400">Max Investment:</p>
-                  <p className="text-xl font-bold">5000 USDT</p>
-                </div>
-              </div>
-              <button className="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-4 rounded-full text-xl font-bold hover:opacity-90">
-                Join Presale Whitelist 🚀
-              </button>
-            </div>
-          </div>
-
-          {/* Floating elements */}
-          <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-            <Rocket className="absolute top-1/4 left-1/4 w-8 h-8 text-pink-400" />
-            <Moon className="absolute top-1/3 right-1/4 w-6 h-6 text-purple-400" />
-            <Star className="absolute bottom-1/4 left-1/3 w-4 h-4 text-cyan-400" />
-            <DollarSign className="absolute top-1/2 right-1/3 w-6 h-6 text-green-400" />
-          </div>
         </div>
-      </div>
 
-      {/* Presale Benefits */}
-      <div className="py-20 px-4 bg-gradient-to-b from-black to-purple-900/20">
-        <div className="max-w-6xl mx-auto text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">Why Join Presale?</h2>
-          <p className="text-xl text-gray-400">Early investors get exclusive benefits!</p>
+        {/* Animated scroll indicator */}
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+          <ChevronDown className="w-8 h-8 text-purple-400 animate-bounce" />
         </div>
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {[
-            { title: "50% Bonus Tokens", description: "Get 50% extra tokens during presale phase" },
-            { title: "Guaranteed Allocation", description: "Your chance to buy before public launch" },
-            { title: "Early Supporter NFT", description: "Exclusive NFT for presale participants" }
-          ].map((benefit, index) => (
-            <div key={index} className="bg-black/50 rounded-xl p-8 border border-pink-500/20">
-              <h3 className="text-2xl font-bold text-pink-500 mb-2">{benefit.title}</h3>
-              <p className="text-gray-400">{benefit.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+      </section>
 
-      {/* Roadmap */}
-      <div className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Launch Roadmap</h2>
-          <div className="grid md:grid-cols-4 gap-8">
+      {/* Features Grid */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 to-blue-400 text-transparent bg-clip-text">
+            Core Features
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { phase: "Phase 1", title: "Presale", status: "Current", items: ["Whitelist Open", "Community Building", "Audits"] },
-              { phase: "Phase 2", title: "Launch", status: "Coming Soon", items: ["DEX Listing", "CMC & CG Listing", "Marketing Push"] },
-              { phase: "Phase 3", title: "Growth", status: "Q2 2024", items: ["CEX Listings", "AI Features Launch", "Partnerships"] },
-              { phase: "Phase 4", title: "Expansion", status: "Q3 2024", items: ["Mobile App", "DAO Governance", "Ecosystem Growth"] }
-            ].map((phase, index) => (
-              <div key={index} className="p-6 border-2 border-pink-500 rounded-xl bg-black/50">
-                <div className="text-pink-500 font-bold mb-2">{phase.phase}</div>
-                <h3 className="text-2xl font-bold mb-2">{phase.title}</h3>
-                <div className="text-sm text-gray-400 mb-4">{phase.status}</div>
-                <ul className="text-gray-300 space-y-2">
-                  {phase.items.map((item, i) => (
-                    <li key={i}>• {item}</li>
-                  ))}
-                </ul>
+              {
+                icon: <Brain className="w-8 h-8" />,
+                title: "Prismatic Analysis™",
+                description: "Our AI model analyzes real-time market data across multiple chains, detecting arbitrage opportunities and market inefficiencies before they become apparent to traditional traders."
+              },
+              {
+                icon: <Zap className="w-8 h-8" />,
+                title: "Crystal Core™ Network",
+                description: "Decentralized network where token holders can run AI nodes, contributing computational power to validate predictions and earn rewards from successful trades."
+              },
+              {
+                icon: <Shield className="w-8 h-8" />,
+                title: "Rainbow Bridge Protocol",
+                description: "Multi-chain execution layer that automatically routes trades through the most efficient paths across different DEXs and bridges for optimal returns."
+              },
+              {
+                icon: <Lock className="w-8 h-8" />,
+                title: "Smart Risk Management",
+                description: "Advanced risk scoring system continuously monitors market conditions and adjusts position sizes to protect against unexpected market movements."
+              },
+              {
+                icon: <LineChart className="w-8 h-8" />,
+                title: "Liquidity Optimization",
+                description: "Dynamic liquidity provision system that identifies and fills market gaps, generating fees for token holders while improving overall market efficiency."
+              },
+              {
+                icon: <Gem className="w-8 h-8" />,
+                title: "Community Governance",
+                description: "Token holders can propose and vote on key parameters including risk levels, reward distribution, and which new chains to expand to."
+              }
+            ].map((feature, index) => (
+              <div key={index} className="group relative">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl blur opacity-50 group-hover:opacity-100 transition duration-300"></div>
+                <div className="relative bg-black p-6 rounded-2xl">
+                  <div className="text-purple-400 group-hover:text-blue-400 transition-colors duration-300">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mt-4 mb-2">{feature.title}</h3>
+                  <p className="text-gray-400">{feature.description}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Features teaser */}
-      <div className="py-20 px-4 bg-gradient-to-b from-purple-900/20 to-black">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-8 border-2 border-pink-500 rounded-xl bg-black/50">
-              <h3 className="text-2xl font-bold text-pink-500 mb-4 flex items-center gap-2">
-                <Brain className="w-6 h-6" /> AI-Powered Analysis
-              </h3>
-              <p className="text-gray-300">Coming Soon: Revolutionary AI algorithms to predict meme trends!</p>
-            </div>
-
-            <div className="p-8 border-2 border-purple-500 rounded-xl bg-black/50">
-              <h3 className="text-2xl font-bold text-purple-500 mb-4 flex items-center gap-2">
-                <Shield className="w-6 h-6" /> Smart Security
-              </h3>
-              <p className="text-gray-300">Audited by top firms, your investment is protected!</p>
-            </div>
+      {/* Token Details */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { label: "Total Supply", value: "10M" },
+              { label: "Initial Price", value: "TBA" },
+              { label: "Launch Date", value: "Coming Soon" },
+              { label: "Whitelist Spots", value: "1,000" }
+            ].map((stat, index) => (
+              <div key={index} className="text-center group">
+                <div className="text-3xl font-bold mb-2 bg-gradient-to-r from-purple-400 to-blue-400 text-transparent bg-clip-text group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
+                  {stat.value}
+                </div>
+                <div className="text-gray-400">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-
-      {/* CTA section */}
-      <div className="py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl font-bold mb-8">Don't Miss This Opportunity! 🚀</h2>
-          <p className="text-2xl text-gray-400 mb-12">Join the whitelist now and be part of the next big crypto revolution!</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-12 py-6 rounded-full text-xl font-bold hover:opacity-90">
-              Join Whitelist Now
-            </button>
-            <button className="bg-white/10 border border-pink-500/50 text-white px-12 py-6 rounded-full text-xl font-bold hover:bg-white/20">
-              View Whitepaper
-            </button>
-          </div>
-        </div>
-      </div>
+      </section>
     </div>
   );
 };
 
-export default CortixWebsite;
+export default PrysmaWebsite;
