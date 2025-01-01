@@ -1,8 +1,10 @@
+// In your PrysmaWebsite.jsx
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, LineChart, Zap, Shield, Gem, Brain, Lock } from 'lucide-react';
+import { ChevronDown, LineChart, Zap, Shield } from 'lucide-react';
 
 const PrysmaWebsite = () => {
   const [glitchText, setGlitchText] = useState('PRYSMA AI');
+  const [showMessage, setShowMessage] = useState(false);
   
   useEffect(() => {
     const glitchInterval = setInterval(() => {
@@ -49,17 +51,37 @@ const PrysmaWebsite = () => {
           </div>
           <div className="hidden md:flex space-x-8">
             {['About', 'Features', 'Tokenomics', 'Roadmap'].map(item => (
-              <a key={item} href={`#${item.toLowerCase()}`} 
-                 className="relative group">
-                <span className="text-gray-300 hover:text-white transition-colors">{item}</span>
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
-              </a>
+              <div key={item} className="relative group">
+                <a 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setShowMessage(true);
+                    setTimeout(() => setShowMessage(false), 2000);
+                  }}
+                  href={`#${item.toLowerCase()}`} 
+                  className="relative group cursor-pointer"
+                >
+                  <span className="text-gray-300 hover:text-white transition-colors">{item}</span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                {showMessage && (
+                  <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 bg-black/90 text-white px-4 py-2 rounded-lg border border-purple-500/30 whitespace-nowrap z-50">
+                    Info releasing 1/2/2025
+                  </div>
+                )}
+              </div>
             ))}
           </div>
-          <a href="YOUR_REDIRECT_LINK_HERE" target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded relative group overflow-hidden hover:scale-105 transition-transform">
-            <span className="relative z-10">$PRYS</span>
+          <button 
+            onClick={() => {
+              setShowMessage(true);
+              setTimeout(() => setShowMessage(false), 2000);
+            }}
+            className="px-6 py-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded relative group overflow-hidden"
+          >
+            <span className="relative z-10">Buy $PRYS</span>
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          </a>
+          </button>
         </div>
       </nav>
 
@@ -67,17 +89,17 @@ const PrysmaWebsite = () => {
       <section className="min-h-screen flex items-center justify-center relative pt-20">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 to-black/20"></div>
+          {/* Animated circuit lines */}
           <div className="absolute inset-0 opacity-20">
             <svg className="w-full h-full" viewBox="0 0 100 100">
               <path d="M0,50 L100,50" className="stroke-current text-purple-500 animate-pulse" strokeWidth="0.1" fill="none"/>
               <path d="M50,0 L50,100" className="stroke-current text-blue-500 animate-pulse" strokeWidth="0.1" fill="none"/>
-              <circle cx="50" cy="50" r="30" className="stroke-current text-purple-500/20" strokeWidth="0.1" fill="none"/>
             </svg>
           </div>
         </div>
         
         <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center max-w-5xl mx-auto">
+          <div className="text-center max-w-4xl mx-auto">
             <div className="glitch-container mb-6">
               <h1 className="text-6xl md:text-7xl font-bold relative">
                 <span className="block bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 text-transparent bg-clip-text transform hover:scale-105 transition-transform">
@@ -89,34 +111,30 @@ const PrysmaWebsite = () => {
               </h1>
             </div>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 relative group">
-              <span className="relative z-10">Decentralized AI-powered trading network that automatically identifies and executes cross-chain opportunities</span>
+              <span className="relative z-10">The world's first Prismatic Intelligence Network™</span>
               <span className="absolute -inset-0.5 bg-gradient-to-r from-purple-500/20 to-blue-500/20 blur opacity-0 group-hover:opacity-100 transition-opacity"></span>
             </p>
-
-            <div className="flex justify-center">
-              <a href="YOUR_REDIRECT_LINK_HERE" target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-gradient-to-r from-purple-500 to-blue-500 rounded relative group overflow-hidden hover:scale-105 transition-transform">
-                <span className="relative z-10">$PRYS</span>
+            <div className="flex justify-center space-x-4">
+              <button 
+                onClick={() => {
+                  setShowMessage(true);
+                  setTimeout(() => setShowMessage(false), 2000);
+                }}
+                className="px-8 py-3 bg-gradient-to-r from-purple-500 to-blue-500 rounded relative group overflow-hidden"
+              >
+                <span className="relative z-10">Learn More</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              </a>
-            </div>
-
-            {/* Key Project Details */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-16">
-              <div className="bg-black/50 p-4 rounded-lg border border-purple-500/30">
-                <Brain className="w-6 h-6 text-purple-400 mx-auto mb-2" />
-                <div className="text-xl font-bold text-white">AI-Powered</div>
-                <div className="text-gray-400 text-sm">Market Analysis</div>
-              </div>
-              <div className="bg-black/50 p-4 rounded-lg border border-purple-500/30">
-                <Lock className="w-6 h-6 text-blue-400 mx-auto mb-2" />
-                <div className="text-xl font-bold text-white">Secure</div>
-                <div className="text-gray-400 text-sm">Architecture</div>
-              </div>
-              <div className="bg-black/50 p-4 rounded-lg border border-purple-500/30">
-                <Gem className="w-6 h-6 text-purple-400 mx-auto mb-2" />
-                <div className="text-xl font-bold text-white">Fair Launch</div>
-                <div className="text-gray-400 text-sm">Distribution</div>
-              </div>
+              </button>
+              <button 
+                onClick={() => {
+                  setShowMessage(true);
+                  setTimeout(() => setShowMessage(false), 2000);
+                }}
+                className="px-8 py-3 border-2 border-purple-500 rounded relative group overflow-hidden"
+              >
+                <span className="relative z-10">Whitepaper</span>
+                <div className="absolute inset-0 bg-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              </button>
             </div>
           </div>
         </div>
