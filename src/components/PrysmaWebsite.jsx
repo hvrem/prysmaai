@@ -1,10 +1,8 @@
-// In your PrysmaWebsite.jsx
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, LineChart, Zap, Shield } from 'lucide-react';
 
 const PrysmaWebsite = () => {
   const [glitchText, setGlitchText] = useState('PRYSMA AI');
-  const [showMessage, setShowMessage] = useState(false);
   
   useEffect(() => {
     const glitchInterval = setInterval(() => {
@@ -51,34 +49,14 @@ const PrysmaWebsite = () => {
           </div>
           <div className="hidden md:flex space-x-8">
             {['About', 'Features', 'Tokenomics', 'Roadmap'].map(item => (
-              <div key={item} className="relative group">
-                <a 
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setShowMessage(true);
-                    setTimeout(() => setShowMessage(false), 2000);
-                  }}
-                  href={`#${item.toLowerCase()}`} 
-                  className="relative group cursor-pointer"
-                >
-                  <span className="text-gray-300 hover:text-white transition-colors">{item}</span>
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
-                </a>
-                {showMessage && (
-                  <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 bg-black/90 text-white px-4 py-2 rounded-lg border border-purple-500/30 whitespace-nowrap z-50">
-                    Info releasing 1/2/2025
-                  </div>
-                )}
-              </div>
+              <a key={item} href={`#${item.toLowerCase()}`} 
+                 className="relative group">
+                <span className="text-gray-300 hover:text-white transition-colors">{item}</span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
+              </a>
             ))}
           </div>
-          <button 
-            onClick={() => {
-              setShowMessage(true);
-              setTimeout(() => setShowMessage(false), 2000);
-            }}
-            className="px-6 py-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded relative group overflow-hidden"
-          >
+          <button className="px-6 py-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded relative group overflow-hidden">
             <span className="relative z-10">Buy $PRYS</span>
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
           </button>
@@ -115,23 +93,11 @@ const PrysmaWebsite = () => {
               <span className="absolute -inset-0.5 bg-gradient-to-r from-purple-500/20 to-blue-500/20 blur opacity-0 group-hover:opacity-100 transition-opacity"></span>
             </p>
             <div className="flex justify-center space-x-4">
-              <button 
-                onClick={() => {
-                  setShowMessage(true);
-                  setTimeout(() => setShowMessage(false), 2000);
-                }}
-                className="px-8 py-3 bg-gradient-to-r from-purple-500 to-blue-500 rounded relative group overflow-hidden"
-              >
+              <button className="px-8 py-3 bg-gradient-to-r from-purple-500 to-blue-500 rounded relative group overflow-hidden">
                 <span className="relative z-10">Learn More</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </button>
-              <button 
-                onClick={() => {
-                  setShowMessage(true);
-                  setTimeout(() => setShowMessage(false), 2000);
-                }}
-                className="px-8 py-3 border-2 border-purple-500 rounded relative group overflow-hidden"
-              >
+              <button className="px-8 py-3 border-2 border-purple-500 rounded relative group overflow-hidden">
                 <span className="relative z-10">Whitepaper</span>
                 <div className="absolute inset-0 bg-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </button>
@@ -145,43 +111,28 @@ const PrysmaWebsite = () => {
         </div>
       </section>
 
-      {/* Features Grid */}
+      {/* Features Grid with Hover Effects */}
       <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 to-blue-400 text-transparent bg-clip-text">
-            Core Features
+            Revolutionary Features
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: <Brain className="w-8 h-8" />,
+                icon: <LineChart className="w-8 h-8" />,
                 title: "Prismatic Analysis™",
-                description: "Our AI model analyzes real-time market data across multiple chains, detecting arbitrage opportunities and market inefficiencies before they become apparent to traditional traders."
+                description: "Advanced AI algorithms break down complex market patterns"
               },
               {
                 icon: <Zap className="w-8 h-8" />,
                 title: "Crystal Core™ Network",
-                description: "Decentralized network where token holders can run AI nodes, contributing computational power to validate predictions and earn rewards from successful trades."
+                description: "Decentralized AI processing nodes working together"
               },
               {
                 icon: <Shield className="w-8 h-8" />,
                 title: "Rainbow Bridge Protocol",
-                description: "Multi-chain execution layer that automatically routes trades through the most efficient paths across different DEXs and bridges for optimal returns."
-              },
-              {
-                icon: <Lock className="w-8 h-8" />,
-                title: "Smart Risk Management",
-                description: "Advanced risk scoring system continuously monitors market conditions and adjusts position sizes to protect against unexpected market movements."
-              },
-              {
-                icon: <LineChart className="w-8 h-8" />,
-                title: "Liquidity Optimization",
-                description: "Dynamic liquidity provision system that identifies and fills market gaps, generating fees for token holders while improving overall market efficiency."
-              },
-              {
-                icon: <Gem className="w-8 h-8" />,
-                title: "Community Governance",
-                description: "Token holders can propose and vote on key parameters including risk levels, reward distribution, and which new chains to expand to."
+                description: "Cross-chain optimization for maximum profit potential"
               }
             ].map((feature, index) => (
               <div key={index} className="group relative">
@@ -199,15 +150,15 @@ const PrysmaWebsite = () => {
         </div>
       </section>
 
-      {/* Token Details */}
+      {/* Dynamic Stats Section */}
       <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { label: "Total Supply", value: "10M" },
-              { label: "Initial Price", value: "TBA" },
-              { label: "Launch Date", value: "Coming Soon" },
-              { label: "Whitelist Spots", value: "1,000" }
+              { label: "Total Supply", value: "50M" },
+              { label: "Holders", value: "10K+" },
+              { label: "APY", value: "15%" },
+              { label: "Price", value: "$0.00" }
             ].map((stat, index) => (
               <div key={index} className="text-center group">
                 <div className="text-3xl font-bold mb-2 bg-gradient-to-r from-purple-400 to-blue-400 text-transparent bg-clip-text group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
