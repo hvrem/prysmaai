@@ -49,7 +49,7 @@ const Hero = () => {
                </ComingSoonButton>
              </div>
              <div className="mt-6 text-sm text-green-400/70">
-               <p>Contract Address: <span className="text-green-500">Releasing 1/6/2025</span></p>
+               <p>Contract Address: <span className="text-green-500">AnD7K4aYHbjDnjwmWDLuJyehY3m7RRRwoouYErtJpump</span></p>
                <p className="mt-2">Chain ID: <span className="text-green-500">6969</span></p>
              </div>
            </div>
