@@ -1,0 +1,10 @@
+.terminal-window {
+  position: relative;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.terminal-window:hover {
+  border-color: rgba(34, 197, 94, 0.5);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
+}
