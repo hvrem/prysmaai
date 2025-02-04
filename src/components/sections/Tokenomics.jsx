@@ -9,7 +9,7 @@ const Tokenomics = () => {
     <div className="text-green-400 font-mono">
       {
         `{
-  "name": "SynapseZero",
+  "name": "RapidZero",
   "symbol": "ZERO",
   "total_supply": "`}<SpazzyNumber originalValue="1,000,000,000" />{`",
   "distribution": {
@@ -33,7 +33,7 @@ const Tokenomics = () => {
         <TerminalWindow>
           <div className="font-mono">
             <p className="mb-4">
-              <span className="text-green-500">root@synapseZero:~$</span> 
+              <span className="text-green-500">root@rapidZero:~$</span> 
               <HackerText text=" cat tokenomics.json" />
             </p>
             <pre className="text-green-400">

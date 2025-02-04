@@ -23,11 +23,11 @@ const Hero = () => {
          <TerminalWindow>
            <div className="font-mono">
              <p className="mb-4">
-               <span className="text-green-500">root@synapseZero:~$</span>
+               <span className="text-green-500">root@rapidZero:~$</span>
                <HackerText text=" initialize neural_network.eth" />
              </p>
              <p className="text-5xl font-bold mb-6">
-               SynapseZero Protocol
+               RapidZero Protocol
              </p>
              <p className="text-xl mb-8">
                <HackerText text="Decentralized Neural Network Evolution" />
