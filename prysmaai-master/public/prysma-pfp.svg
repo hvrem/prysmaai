@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Prism glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Rainbow gradient for prism effect -->
+    <linearGradient id="prismGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff00ff;stop-opacity:0.6" />
+      <stop offset="50%" style="stop-color:#4169e1;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#9400d3;stop-opacity:0.6" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Base circle -->
+  <circle cx="200" cy="200" r="200" fill="url(#bgGradient)"/>
+  
+  <!-- Prism shape -->
+  <g transform="translate(200,200) scale(1.2)" filter="url(#glow)">
+    <!-- Main prism triangle -->
+    <path d="M0,-100 L86.6,50 L-86.6,50 Z" 
+          fill="url(#prismGradient)" 
+          stroke="#ffffff" 
+          stroke-width="2"
+          style="opacity:0.9"/>
+    
+    <!-- Light beams -->
+    <path d="M0,-90 L120,-30 L120,30 L0,90 L-120,30 L-120,-30 Z" 
+          fill="none" 
+          stroke="rgba(255,255,255,0.3)" 
+          stroke-width="1"/>
+    
+    <!-- Central core -->
+    <circle cx="0" cy="0" r="20" 
+            fill="#ffffff" 
+            style="opacity:0.3"/>
+  </g>
+  
+  <!-- Overlay effects -->
+  <g style="opacity:0.5">
+    <circle cx="160" cy="160" r="5" fill="#ff00ff"/>
+    <circle cx="240" cy="160" r="5" fill="#4169e1"/>
+    <circle cx="200" cy="240" r="5" fill="#9400d3"/>
+  </g>
+  
+  <!-- Outer ring -->
+  <circle cx="200" cy="200" r="190" 
+          fill="none" 
+          stroke="url(#prismGradient)" 
+          stroke-width="4"
+          style="opacity:0.5"/>
+</svg>
